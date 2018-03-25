@@ -1,0 +1,4 @@
+# ignore config file with API keys
+config.py
+
+__pycache__/
