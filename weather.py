@@ -1,6 +1,6 @@
 import requests
 import sys
-import datetime
+from util import calculate_target_date
 try:
     import config
 except ImportError as e:
@@ -42,12 +42,7 @@ class Weather:
 
         # calculate UNIX timestamp of the data that should be extracted from the response
         # TODO: make sure this works with all time zones
-        target_date = datetime.datetime.now()
-        target_date = target_date.replace(hour=0, minute=0, second=0, microsecond=0)
-        if datetime.datetime.time(datetime.datetime.now()) >= config.TIME_LIMIT:
-            # we print information for the next day
-            target_date += datetime.timedelta(days=1)
-
+        target_date = calculate_target_date()
         timestamp = target_date.timestamp()
 
         forecast_data = None
@@ -64,9 +59,11 @@ class Weather:
         forecast_text = ("Wettervorhersage für {:%A}: {summary} Die Temperatur beträgt zwischen {temperatureLow}°C "
                          "und {temperatureHigh}°C. Die Niederschlagswahrscheinlichkeit beträgt {precipProbability}%.")
 
-        # calculate percentage
         try:
+            # calculate percentage
             forecast_data['precipProbability'] *= 100
+
+            # insert weather data into format string
             forecast_text = forecast_text.format(target_date, **forecast_data)
         except KeyError:
             print("Error: acquired weather data is missing some required attributes")
