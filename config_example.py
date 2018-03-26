@@ -7,3 +7,6 @@ TIME_LIMIT = time(18, 00, 00)
 
 # this is the API key used for the darksky.net weather API
 DARKSKY_KEY = 'YOUR API KEY HERE'
+
+# this is the API key used for the newsapi.org news API
+NEWSAPI_KEY = 'YOUR API KEY HERE'
