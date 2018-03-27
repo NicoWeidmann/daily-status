@@ -6,3 +6,4 @@ verify_ssl = true
 requests = "*"
 serial = "*"
 unidecode = "*"
+google-api-python-client = "*"
