@@ -11,3 +11,11 @@ def calculate_target_date():
         # we print information for the next day
         target_date += datetime.timedelta(days=1)
     return target_date
+
+
+# return a sorting key for a given event as specified by the Google Calendar API
+# formatted as ISO 8601 string.
+# This places whole day events before timed events
+# TODO: consider timezone (e.g. convert to UTC)
+def sortkey_event_datetime(event):
+    return event['start'].get('dateTime', event['start'].get('date'))
