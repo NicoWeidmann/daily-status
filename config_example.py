@@ -9,6 +9,9 @@ TIME_LIMIT = time(18, 00, 00)
 # TODO: find a more convenient solution to consider DST / different time zones
 UTC_OFFSET = timedelta(hours=2)
 
+# this is the locale used for formatting dates and times in the status
+LOCALE = 'de_DE.utf8'
+
 # this is the API key used for the darksky.net weather API
 DARKSKY_KEY = 'YOUR API KEY HERE'
 

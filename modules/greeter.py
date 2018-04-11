@@ -1,4 +1,5 @@
 from util import calculate_target_date
+import config
 import locale
 
 
@@ -6,7 +7,7 @@ class Greeter:
 
     def __init__(self, name):
         self.name = name
-        locale.setlocale(locale.LC_TIME, "de_DE")  # set the locale for correct date formatting
+        locale.setlocale(locale.LC_ALL, config.LOCALE)  # set the locale for correct date formatting
 
     def execute(self, printer=None):
         if printer is not None:
