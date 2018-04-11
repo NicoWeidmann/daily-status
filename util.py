@@ -32,5 +32,6 @@ def print_header(printer, header):
 
 def print_error(printer):
     printer.justify('C')
-    printer.write('Es ist ein Fehler aufgetreten :()')
+    printer.write('Es ist ein Fehler aufgetreten :(')
     printer.justify('L')
+    printer.feed(2)

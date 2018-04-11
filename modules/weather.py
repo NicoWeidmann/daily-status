@@ -12,7 +12,7 @@ except ImportError as e:
 
 # set locale to german
 import locale
-locale.setlocale(locale.LC_ALL, 'de_DE')
+locale.setlocale(locale.LC_ALL, config.LOCALE)
 
 
 class Weather:
@@ -60,15 +60,15 @@ class Weather:
             print_error()
             return
 
-        forecast_text = ("Wettervorhersage für {:%A}:\n{summary} Die Temperatur betraegt zwischen {temperatureLow}°C "
-                         "und {temperatureHigh}°C. Die Niederschlagswahrscheinlichkeit beträgt {precipProbability}%.")
+        forecast_text = ("{summary} Die Temperatur betraegt zwischen {temperatureLow}°C "
+                         "und {temperatureHigh}°C. Die Niederschlagswahrscheinlichkeit betraegt {precipProbability}%.")
 
         try:
             # calculate percentage
             forecast_data['precipProbability'] *= 100
 
             # insert weather data into format string
-            forecast_text = forecast_text.format(target_date, **forecast_data)
+            forecast_text = forecast_text.format(**forecast_data)
         except KeyError:
             print("Error: acquired weather data is missing some required attributes")
             print_error()
