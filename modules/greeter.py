@@ -1,10 +1,12 @@
 from util import calculate_target_date
+import locale
 
 
 class Greeter:
 
     def __init__(self, name):
         self.name = name
+        locale.setlocale(locale.LC_TIME, "de_DE")  # set the locale for correct date formatting
 
     def execute(self, printer=None):
         if printer is not None:
@@ -13,7 +15,8 @@ class Greeter:
             printer.boldOn()
             printer.write(self.name)
             printer.boldOff()
-            printer.write('. Hier ist dein Status fuer\n')
+            printer.write('.\n')
+            printer.write('Hier ist dein Status fuer\n')
             printer.justify('C')
             printer.setSize('L')
             printer.write('{:%A}\n'.format(calculate_target_date()))
