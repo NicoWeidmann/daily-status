@@ -51,7 +51,31 @@ class Calendar:
                     orderBy='startTime', pageToken=eventsResult['nextPageToken']).execute()
                 events.extend(eventsResult.get('items', []))
 
+        # sort events (necessary because we join events of multiple calendars)
+        events = sorted(events, key=util.sortkey_event_datetime)
+
         # print events
-        for event in sorted(events, key=util.sortkey_event_datetime):
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            print(start, event['summary'])
+        printer.justify('C')
+        printer.inverseOn()
+        printer.write('--- Termine ---\n')
+        printer.inverseOff()
+        printer.justify('L')
+        printer.feed(1)
+
+        if len(events) == 0:
+            # no events for the target day
+            printer.justify('C')
+            printer.write('es stehen keine Termine\n')
+            printer.write('im Kalender.\n')
+            printer.justify('L')
+        else:
+            for event in events:
+                # if this is not an all-day event, print the start time
+                if 'dateTime' in event['start']:
+                    printer.underlineOn()
+                    printer.write('{:%H:%M}'.format(event['start']['dateTime']))
+                    printer.underlineOff()
+                    printer.write(' ')
+                printer.write(event['summary'] + '\n')
+
+        printer.feed(2)
