@@ -60,8 +60,8 @@ class Weather:
             print_error()
             return
 
-        forecast_text = ("{summary} Die Temperatur betraegt zwischen {temperatureLow}°C "
-                         "und {temperatureHigh}°C. Die Niederschlagswahrscheinlichkeit betraegt {precipProbability}%.")
+        forecast_text = ("{summary} Die Temperatur beträgt zwischen {temperatureLow}°C "
+                         "und {temperatureHigh}°C. Die Niederschlagswahrscheinlichkeit beträgt {precipProbability}%.")
 
         try:
             # calculate percentage

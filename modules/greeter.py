@@ -17,7 +17,7 @@ class Greeter:
             printer.write(self.name)
             printer.boldOff()
             printer.write('.\n')
-            printer.write('Hier ist dein Status fuer\n')
+            printer.write('Hier ist dein Status für\n')
             printer.justify('C')
             printer.setSize('L')
             printer.feed(1)
