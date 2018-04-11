@@ -73,7 +73,7 @@ class Calendar:
                 # if this is not an all-day event, print the start time
                 if 'dateTime' in event['start']:
                     printer.underlineOn()
-                    printer.write('{:%H:%M}'.format(event['start']['dateTime']))
+                    printer.write(event['start']['dateTime'][11:16])  # extract time from ISO8601 timestamp
                     printer.underlineOff()
                     printer.write(' ')
                 printer.write(event['summary'] + '\n')
