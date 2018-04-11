@@ -28,3 +28,9 @@ def print_header(printer, header):
     printer.inverseOff()
     printer.justify('L')
     printer.feed(1)
+
+
+def print_error(printer):
+    printer.justify('C')
+    printer.write('Es ist ein Fehler aufgetreten :()')
+    printer.justify('L')

@@ -1,6 +1,6 @@
 import requests
 import sys
-from util import calculate_target_date
+from util import calculate_target_date, print_header, print_error
 try:
     import config
 except ImportError as e:
@@ -34,8 +34,11 @@ class Weather:
         # perform API request
         r = requests.get(self.api_url, params=self.params)
 
+        print_header(printer, 'Wetter')
+
         if r.status_code != 200:
             print("Error: Couldn't reach darksky API for weather information")
+            print_error(printer)
             return
 
         json = r.json()
@@ -54,9 +57,10 @@ class Weather:
         else:
             # couldn't find appropriate data for the desired day
             print("Error: Couldn't acquire weather data for", target_date.isoformat)
+            print_error()
             return
 
-        forecast_text = ("Wettervorhersage für {:%A}: {summary} Die Temperatur beträgt zwischen {temperatureLow}°C "
+        forecast_text = ("Wettervorhersage für {:%A}:\n{summary} Die Temperatur betraegt zwischen {temperatureLow}°C "
                          "und {temperatureHigh}°C. Die Niederschlagswahrscheinlichkeit beträgt {precipProbability}%.")
 
         try:
@@ -67,6 +71,8 @@ class Weather:
             forecast_text = forecast_text.format(target_date, **forecast_data)
         except KeyError:
             print("Error: acquired weather data is missing some required attributes")
-            forecast_text = "Es ist ein Fehler beim Laden des Wetters aufgetreten."
+            print_error()
+            return
 
-        print(forecast_text)
+        printer.write(forecast_text)
+        printer.feed(2)
