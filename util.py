@@ -19,3 +19,12 @@ def calculate_target_date():
 # TODO: consider timezone (e.g. convert to UTC)
 def sortkey_event_datetime(event):
     return event['start'].get('dateTime', event['start'].get('date'))
+
+
+def print_header(printer, header):
+    printer.justify('C')
+    printer.inverseOn()
+    printer.write('--- {} ---\n'.format(header))
+    printer.inverseOff()
+    printer.justify('L')
+    printer.feed(1)

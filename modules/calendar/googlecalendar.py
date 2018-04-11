@@ -55,12 +55,7 @@ class Calendar:
         events = sorted(events, key=util.sortkey_event_datetime)
 
         # print events
-        printer.justify('C')
-        printer.inverseOn()
-        printer.write('--- Termine ---\n')
-        printer.inverseOff()
-        printer.justify('L')
-        printer.feed(1)
+        util.print_header('Termine')
 
         if len(events) == 0:
             # no events for the target day
