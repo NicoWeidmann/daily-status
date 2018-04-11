@@ -1,3 +1,4 @@
 [submodule "lib/printer"]
 	path = lib/printer
-	url = https://github.com/adafruit/Python-Thermal-Printer.git
+	url = https://github.com/NicoWeidmann/Python-Thermal-Printer.git
+	branch = master
