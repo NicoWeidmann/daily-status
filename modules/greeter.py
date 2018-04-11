@@ -19,6 +19,7 @@ class Greeter:
             printer.write('Hier ist dein Status fuer\n')
             printer.justify('C')
             printer.setSize('L')
+            printer.feed(1)
             printer.write('{:%A}\n'.format(calculate_target_date()))
             printer.setSize('S')    # this is the default size
             printer.write('{:%x}\n'.format(calculate_target_date()))
