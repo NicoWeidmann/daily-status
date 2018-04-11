@@ -16,7 +16,7 @@ class Ticker:
 
     def execute(self, printer):
         r = requests.get(Ticker.TICKER_URL)
-        util.print_header('Postillon')
+        util.print_header(printer, 'Postillon')
         if r.status_code != 200:
             print("Error: Couldn't load postillon tickers (request failed)")
             Ticker._print_error(printer)
@@ -40,7 +40,7 @@ class Ticker:
             return
 
         for ticker in tickers:
-            print(ticker)
+            printer.write(ticker + '\n')
             printer.feed(1)
 
         printer.feed(1)

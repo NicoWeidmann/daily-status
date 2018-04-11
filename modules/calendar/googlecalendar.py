@@ -55,7 +55,7 @@ class Calendar:
         events = sorted(events, key=util.sortkey_event_datetime)
 
         # print events
-        util.print_header('Termine')
+        util.print_header(printer, 'Termine')
 
         if len(events) == 0:
             # no events for the target day
