@@ -7,7 +7,7 @@ import config
 def calculate_target_date():
     current_time = datetime.datetime.now(tz=datetime.timezone(config.UTC_OFFSET))
     target_date = current_time.replace(hour=0, minute=0, second=0, microsecond=0)
-    if current_time.time >= config.TIME_LIMIT:
+    if current_time.time() >= config.TIME_LIMIT:
         # we print information for the next day
         target_date += datetime.timedelta(days=1)
     return target_date

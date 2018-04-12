@@ -59,7 +59,7 @@ class News:
             printer.write(a.source_name + '\n')
             printer.underlineOff()
             # print the headline
-            printer.write(a.title + '/n')
+            printer.write(a.title + '\n')
             printer.feed(1)
             # TODO: implement QR-Code generation
 
