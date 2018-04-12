@@ -27,7 +27,7 @@ class News:
 
     def execute(self, printer):
         # currently we fetch top buzzfeed articles (don't judge me, they are a good laugh)
-        params = {'sources': 'buzzfeed', 'pageSize': self.count}
+        params = {'country': 'de', 'pageSize': self.count}
         r = requests.get(News.API_ENDPOINT, params=params, headers={'Authorization': 'Bearer ' + config.NEWSAPI_KEY})
 
         util.print_header(printer, 'Nachrichten')
