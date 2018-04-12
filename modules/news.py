@@ -1,6 +1,7 @@
 import requests
 import datetime
 import config
+import util
 
 
 class _Article:
@@ -8,6 +9,7 @@ class _Article:
     def __init__(self, **kwargs):
         self.title = kwargs.get('title')
         self.description = kwargs.get('description') if kwargs.get('description') != '' else None
+        self.source_name = kwargs.get('source').get('name')
         self.url = kwargs.get('url')
 
         # we parse the date as ISO 8601 in UTC
@@ -28,8 +30,11 @@ class News:
         params = {'sources': 'buzzfeed', 'pageSize': self.count}
         r = requests.get(News.API_ENDPOINT, params=params, headers={'Authorization': 'Bearer ' + config.NEWSAPI_KEY})
 
+        util.print_header(printer, 'Nachrichten')
+
         if r.status_code != 200:
             print("Error: Couldn't fetch news articles (request failed)")
+            util.print_error(printer)
             return
 
         try:
@@ -37,6 +42,7 @@ class News:
         except ValueError as e:
             print(e)
             print("Error: Couldn't fetch headlines (invalid or missing response content)")
+            util.print_error(printer)
             return
 
         try:
@@ -44,9 +50,17 @@ class News:
         except KeyError as e:
             print(e)
             print("Error: Couldn't fetch headlines (unexpected response format)")
+            util.print_error(printer)
             return
 
         for a in articles:
-            # only print the headline
+            # print the source
+            printer.underlineOn()
+            printer.write(a.source_name + '\n')
+            printer.underlineOff()
+            # print the headline
+            printer.write(a.title + '/n')
+            printer.feed(1)
             # TODO: implement QR-Code generation
-            print(a.title)
+
+        printer.feed(1)
