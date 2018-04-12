@@ -13,12 +13,12 @@ prints a daily status report with the events of the day, a weather report and so
 The script consists of separated [modules](modules/), each of which prints a separate part of the report. With
 this design, it is easy to add new modules to the report. As of now, the following modules exist:
 
-* **Calendar**:  
-This module connects to a user's google calendar and prints the upcoming events for the day of interest. A descrition
-on how to set up the module can be found [here](modules/calendar).
-
 * **Greeter**:  
 Prints a greeting with the user's name. Also prints the day and date the report is generated for.
+
+* **Calendar**:  
+This module connects to a user's google calendar and prints the upcoming events for the day of interest. A description
+on how to set up the module can be found [here](modules/calendar).
 
 * **Weather**:  
 Prints a weather report for the day of interest (with min. and max. temperatures and precipitation probability). The
@@ -29,8 +29,8 @@ Prints some trending headlines. The default version prints the 3 top headlines i
 the [newsapi.org](https://newsapi.org) API.
 
 * **Postillon**:  
-This module prints pun headlines made by [Der Postillon](http://www.der-postillon.com), a satiric german news site (quite
-similar to [The Onion](https://www.theonion.com)).
+This module prints pun headlines provided by [Der Postillon](http://www.der-postillon.com), a satiric german news site
+(quite similar to [The Onion](https://www.theonion.com)).
 
 ## Usage
 
@@ -51,6 +51,8 @@ Instructions on how to set up the hardware (i.e. how to connect printer and Rasp
 Tutorial](https://learn.adafruit.com/pi-thermal-printer/case-2#step-28). However, only the GND and RX pins have to be
 connected (some sources say that connecting the TX pin could damage the RasPi).
 
+To actually print the report, run `python3.6 main.py` in the root directory of the repository.
+
 *If something doesn't work as intended, feel free to open a new Issue or fix the problem
 yourself and open a PR ;)*
 
@@ -66,4 +68,4 @@ also be used)
 * for the Calendar module: a Google API console project and, of course, a Google account. See [here](modules/calendar) for
 further instructions.
 * for the Weather module: a [darksky.net](https://darksky.net/dev) API key (free for developers).
-* for the News module: a [newsapi.org](https://newsapi.org) API (free as well)
+* for the News module: a [newsapi.org](https://newsapi.org) API key (free as well)
