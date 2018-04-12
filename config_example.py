@@ -1,5 +1,8 @@
 from datetime import time, timedelta
 
+# this is your name (used by the greeter module)
+NAME = 'MAX MUSTERMANN'
+
 # this is the time during a day after which information for the next day
 # will be printed instead of the current day
 # format as 'HH, MM, SS'
@@ -10,7 +13,7 @@ TIME_LIMIT = time(18, 00, 00)
 UTC_OFFSET = timedelta(hours=2)
 
 # this is the locale used for formatting dates and times in the status
-LOCALE = 'de_DE.utf8'
+LOCALE = 'de_DE'
 
 # this is the API key used for the darksky.net weather API
 DARKSKY_KEY = 'YOUR API KEY HERE'

@@ -1,14 +1,6 @@
 import requests
-import sys
 from util import calculate_target_date, print_header, print_error
-try:
-    import config
-except ImportError as e:
-    # config file is missing
-    print('Error:', e)
-    print('Please create a config file'
-          ' (see "config_example.py" for instructions on how to do this) and restart the program.')
-    sys.exit(1)
+import config
 
 # set locale to german
 import locale
