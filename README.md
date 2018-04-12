@@ -51,6 +51,9 @@ Instructions on how to set up the hardware (i.e. how to connect printer and Rasp
 Tutorial](https://learn.adafruit.com/pi-thermal-printer/case-2#step-28). However, only the GND and RX pins have to be
 connected (some sources say that connecting the TX pin could damage the RasPi).
 
+*If something doesn't work as intended, feel free to open a new Issue or fix the problem
+yourself and open a PR ;)*
+
 ## Requirements
 
 * Raspberry Pi 1 (might also work with later models, although additional configuration might be necessary due to issues
